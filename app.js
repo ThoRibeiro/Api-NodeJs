@@ -1,7 +1,10 @@
 const express = require("express");
-const app = express();
 const userRoute = require("./route/user_route");
 const authRoute = require("./route/auth_route");
+
+const app = express();
+
+app.use(express.json());
 
 // Permet de configurer les requetes pour l'api REST
 app.use((req,res,next) => {
