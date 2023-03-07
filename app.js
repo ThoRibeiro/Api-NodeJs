@@ -7,15 +7,21 @@ const app = express();
 app.use(express.json());
 
 // Permet de configurer les requetes pour l'api REST
-app.use((req,res,next) => {
-    res.setHeader("Access-Control-Allow-Origin","*");
-    res.setHeader("Access-Control-Allow-Headers", 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-    res.setHeader("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS");
-    next();
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS"
+  );
+  next();
 });
 
 // permet de pouvoir faire la requete associée
-app.use("/user" , userRoute);
-app.use("/auth" , authRoute);
+app.use("/user", userRoute);
+app.use("/auth", authRoute);
 
 module.exports = app;
