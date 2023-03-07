@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
-const userRoute = require("./route/user.route");
+const userRoute = require("./route/user_route");
+const authRoute = require("./route/auth_route");
 
 // Permet de configurer les requetes pour l'api REST
 app.use((req,res,next) => {
@@ -10,6 +11,8 @@ app.use((req,res,next) => {
     next();
 });
 
+// permet de pouvoir faire la requete associée
 app.use("/user" , userRoute);
+app.use("/auth" , authRoute);
 
 module.exports = app;
