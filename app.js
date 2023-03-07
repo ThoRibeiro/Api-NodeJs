@@ -20,7 +20,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// permet de pouvoir faire la requete associée
+// Permet d'afficher le route
 app.use("/user", userRoute);
 app.use("/auth", authRoute);
 
