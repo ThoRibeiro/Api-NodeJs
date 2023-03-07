@@ -7,15 +7,20 @@ exports.create = (user) => {
 }
 
 exports.getAll = () => {
-
+    return userList.map(user => { return { email: user.email } });
 }
 
-exports.getOne = () => {
-
+exports.getOne = (email) => {
+    let user = userList.find(user => user.email === email);
+    if (user) {
+        return user;
+    }else{
+        throw new Error("Utilisateur non trouvé");
+    }
 }
 
 exports.update = () => {
-
+    
 }
 
 exports.delete = () => {

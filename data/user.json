@@ -10,5 +10,13 @@
     {
         "email": "test@gmail.com",
         "password": "$2b$10$874b45ezwCjz/W6pVeC7Lu/FYsXrkdXW050JkO1gcj9f/8A10Dvvm"
+    },
+    {
+        "email": "tes2t@gmail.com",
+        "password": "$2b$10$Dx8XykCL7lLMiUOHCDNx7ex2wn033.d5kAGwLTG.1rSiFVWUGP7C."
+    },
+    {
+        "email": "tes2t@gmail.com",
+        "password": "$2b$10$RNYGfEtzrMbSNxLgTeSVnOqb55vAUeAd7S.svQIymLj/Pm.kooAxC"
     }
 ]
