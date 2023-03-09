@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path")
 const userRoute = require("./route/user_route");
 const authRoute = require("./route/auth_route");
 const productRoute = require("./route/product_route");
@@ -22,6 +23,7 @@ app.use((req, res, next) => {
 });
 
 // Permet d'afficher le route
+app.use('/images', express.static(path.join(__dirname, "images")));
 app.use("/user", userRoute);
 app.use("/auth", authRoute);
 app.use("/product", productRoute)

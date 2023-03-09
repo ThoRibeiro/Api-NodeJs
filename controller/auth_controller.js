@@ -1,29 +1,28 @@
-// Bibliothèque and require
 const bcrypt = require("bcrypt");
 const userModel = require("./../model/user_model");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
-// permet de s'inscrire et de hash le mdp
 exports.signin = (req, res, next) => {
-  bcrypt
-    .hash(req.body.password, 10)
-    .then((hash) => {
-      try {
-        userModel.create({
-          email: req.body.email,
-          password: hash,
-        });
-        res.status(201).json({ message: "Utilisateur créé" });
-      } catch (error) {
-        res.status(500).json(error);
-      }
-    })
-    .catch((error) => {
-      res.status(500).json(error);
-    });
-};
+    bcrypt.hash(req.body.password, 10)
+        .then(hash => {
+            try {
+                userModel.create({
+                    email: req.body.email,
+                    password: hash
+                });
+                res.status(201).json({ message: "Utilisateur créé" });
+            } catch (error) {
+                res.status(500).json(error);
+            }
 
-// Login
+        })
+        .catch(error => {
+            res.status(500).json(error);
+        });
+
+}
+
 exports.login = (req, res, next) => {
     try {
         let user = userModel.getOne(req.body.email);
@@ -34,12 +33,11 @@ exports.login = (req, res, next) => {
                         email: user.email,
                         jwt: jwt.sign({
                             email: user.email
-                        }, "d8a2123b708e4b2116b3b8f4b18ed499")
+                        }, process.env.JWT_TOKEN)
                     });
                 } else {
                     res.status(401).json({ message: "Mot de passe incorrect" });
                 }
-
             })
             .catch(error => {
                 res.status(500).json(error);
@@ -48,4 +46,4 @@ exports.login = (req, res, next) => {
         res.status(500).json({ message: error.message });
     }
 
-};
+}
